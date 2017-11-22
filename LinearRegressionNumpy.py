@@ -33,33 +33,38 @@ def gradient_descent(X, y, W, b, alpha = 0.01, num_iterations = 1500):
         W = W - W_gradient
         b = b - b_gradient
         cost_history.append(calculate_total_cost(X, y, W, b))
+
+        if i % 50 == 0:
+            plot_data_with_prediction(X, y, W, b)
+
     return W, b, cost_history
 
 def plot_cost_history(cost_history):
+    plt.figure(2)
     plt.plot(cost_history, color = 'blue')
     plt.title('Cost Reduction by Gradient Descent')
     plt.xlabel('Iterations')
     plt.ylabel('Cost')
     plt.show()
 
-def plot_data_with_prediction(X, y, W, b, title):
+def plot_data_with_prediction(X, y, W, b):
+    plt.clf()
     training_data = plt.scatter(X, y, color = 'red', label="Traning Data")
     points = np.arange(4.5, 23.5, 0.1)
     predictions = predict(points, W, b)
     prediction_line, = plt.plot(points, predictions, color = 'blue', label="Prediction")
     plt.legend(handles=[training_data, prediction_line], loc = 4)
-    plt.title(title)
+    plt.title("Training Data with Learning Prediction Function")
     plt.xlabel('Population of City in $10,000s')
     plt.ylabel('Profit in $10,000s')
-    plt.show()
+    plt.draw()
+    plt.pause(0.00001)
 
-def run():
+def model():
     X, y = load_data()
     W, b = initialize_parameters()
-    plot_data_with_prediction(X, y, W, b, "Training Data with Random Prediction")
     W, b, cost_history = gradient_descent(X, y, W, b)
-    plot_data_with_prediction(X, y, W, b, "Training Data with Learned Prediction")
     plot_cost_history(cost_history)
 
 if __name__ == '__main__':
-    run ()
+    model()
