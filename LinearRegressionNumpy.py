@@ -65,7 +65,7 @@ def plot_data_with_prediction(X, y, W, b):
     prediction_line, = plt.plot(points, predictions, color = 'blue', label="Prediction")
     plt.legend(handles=[training_data, prediction_line], loc = 4)
     plt.title("Training Data with Learning Prediction Function")
-    plt.xlabel('Population of City in $10,000s')
+    plt.xlabel('Population of City in 10,000s')
     plt.ylabel('Profit in $10,000s')
     plt.draw()
     plt.pause(0.00001)
