@@ -11,7 +11,7 @@ def load_data():
     y = points[:,1]
     return X, y
 
-# W (weights) and b (bias) are  initialized with rando numbers, could use np.zero() too.
+# W (weights) and b (bias) are  initialized with random numbers, could use np.zero() too.
 def initialize_parameters():
     W = np.random.randn()
     b = np.random.randn()
@@ -55,7 +55,7 @@ def plot_cost_history(cost_history):
     plt.ylabel('Cost')
     plt.show()
 
-# The data is plotted in a grapha with the Line of Best Fit predicted.
+# The data is plotted in a graph with the Line of Best Fit predicted.
 # This function is called in the gradient descent loop, so we can see the learning happening and the line changing to a better position.
 def plot_data_with_prediction(X, y, W, b):
     plt.clf()
